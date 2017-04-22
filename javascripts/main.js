@@ -33,8 +33,6 @@ $(document).ready(function(){
 	let gendersArray = [];
 	
 
-	// var person = {firstName:"John", lastName:"Doe", age:46};
-
 	loadTeams().then((teams) => {
 		teamList = teams;
 		loadNav(teamList);	
