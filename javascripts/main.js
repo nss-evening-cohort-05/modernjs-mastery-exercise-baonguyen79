@@ -38,7 +38,6 @@ $(document).ready(function(){
 	    	teamList = result[0];
 	    	charactersArray = result[1];
 	    	gendersArray = result[2];
-	    	console.log(teamList);
 	    	loadNav(teamList);	
 
 	    }).catch((Error) => console.log(Error));
