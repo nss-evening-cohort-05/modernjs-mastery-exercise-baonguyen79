@@ -32,20 +32,30 @@ $(document).ready(function(){
 	let charactersArray = [];
 	let gendersArray = [];
 	
+	// use PromisAll
+	Promise.all([loadTeams(), loadCharacters(), loadGenders()])
+	    .then(function(result){
+	    	teamList = result[0];
+	    	charactersArray = result[1];
+	    	gendersArray = result[2];
+	    	loadNav(teamList);	
 
-	loadTeams().then((teams) => {
-		teamList = teams;
-		loadNav(teamList);	
-		return loadGenders();
-		})
-	.then((genders) => {
-		gendersArray = genders;
-		return loadCharacters();
-	})	
-	.then((characters) => {
-		charactersArray = characters;
+	    }).catch((Error) => console.log(Error));
 
-	});
+
+	// loadTeams().then((teams) => {
+	// 	teamList = teams;
+	// 	loadNav(teamList);	
+	// 	return loadGenders();
+	// 	})
+	// .then((genders) => {
+	// 	gendersArray = genders;
+	// 	return loadCharacters();
+	// })	
+	// .then((characters) => {
+	// 	charactersArray = characters;
+
+	// });
 
 	teamUL.on('click', 'li', function(){	
        let teamSelectId = $(this).attr('id');
